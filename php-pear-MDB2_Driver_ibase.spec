@@ -14,6 +14,7 @@ Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
 # Source0-md5:	bb17fef61c959a6e4b20175a7f5bd8b7
 URL:		http://pear.php.net/package/MDB2_Driver_ibase/
+BuildRequires:	php-pear-PEAR
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Requires:	php-common >= 3:5.0.4
 Requires:	php-interbase
