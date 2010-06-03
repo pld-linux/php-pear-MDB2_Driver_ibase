@@ -18,7 +18,7 @@ BuildRequires:	php-pear-PEAR
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	php(interbase)
-Requires:	php-common >= 3:5.0.4
+Requires:	php-common >= 4:5.0.4
 Requires:	php-pear
 Requires:	php-pear-MDB2 >= 1:2.3.0
 Requires:	php-pear-PEAR-core >= 1:1.4.0b1
@@ -40,8 +40,8 @@ Summary:	Tests for PEAR::%{_pearname}
 Summary(pl.UTF-8):	Testy dla PEAR::%{_pearname}
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{version}-%{release}
-AutoReq:	no
 AutoProv:	no
+AutoReq:	no
 
 %description tests
 Tests for PEAR::%{_pearname}.
