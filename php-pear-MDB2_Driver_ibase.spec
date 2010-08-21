@@ -4,7 +4,7 @@
 %define		_status		beta
 %define		_pearname	MDB2_Driver_ibase
 %define		subver	b2
-%define		rel		1
+%define		rel		2
 Summary:	%{_pearname} - ibase MDB2 driver
 Summary(pl.UTF-8):	%{_pearname} - sterownik ibase dla MDB2
 Name:		php-pear-%{_pearname}
@@ -15,14 +15,13 @@ Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}%{subver}.tgz
 # Source0-md5:	10c807bca6adc7f39641574d9d9bb47d
 URL:		http://pear.php.net/package/MDB2_Driver_ibase/
-BuildRequires:	php-pear-PEAR
+BuildRequires:	php-pear-PEAR >= 1:1.4.0-0.b1
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.300
-Requires:	php(interbase)
 Requires:	php-common >= 4:5.0.4
+Requires:	php-interbase
 Requires:	php-pear
 Requires:	php-pear-MDB2 >= 1:2.5.0-0.b2
-Requires:	php-pear-PEAR-core >= 1:1.4.0-0.b1
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
