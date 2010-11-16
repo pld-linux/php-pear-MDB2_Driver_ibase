@@ -1,10 +1,8 @@
 %include	/usr/lib/rpm/macros.php
-%define		_class		MDB2
-%define		_subclass	Driver_ibase
 %define		_status		beta
 %define		_pearname	MDB2_Driver_ibase
-%define		subver	b2
-%define		rel		2
+%define		subver	b3
+%define		rel		1
 Summary:	%{_pearname} - ibase MDB2 driver
 Summary(pl.UTF-8):	%{_pearname} - sterownik ibase dla MDB2
 Name:		php-pear-%{_pearname}
@@ -13,15 +11,16 @@ Release:	0.%{subver}.%{rel}
 License:	BSD License
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}%{subver}.tgz
-# Source0-md5:	10c807bca6adc7f39641574d9d9bb47d
+# Source0-md5:	81305a26f86eb14ac21de35370e7125e
 URL:		http://pear.php.net/package/MDB2_Driver_ibase/
-BuildRequires:	php-pear-PEAR >= 1:1.4.0-0.b1
+BuildRequires:	php-pear-PEAR >= 1:1.9.1
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	php-common >= 4:5.0.4
 Requires:	php-interbase
 Requires:	php-pear
-Requires:	php-pear-MDB2 >= 1:2.5.0-0.b2
+Requires:	php-pear-MDB2 >= 1:2.5.0-0.b3
+Obsoletes:	php-pear-%{_pearname}-tests
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,20 +34,6 @@ Sterownik Firebird/Interbase dla MDB2.
 
 Ta klasa ma w PEAR status: %{_status}.
 
-%package tests
-Summary:	Tests for PEAR::%{_pearname}
-Summary(pl.UTF-8):	Testy dla PEAR::%{_pearname}
-Group:		Development/Languages/PHP
-Requires:	%{name} = %{version}-%{release}
-AutoProv:	no
-AutoReq:	no
-
-%description tests
-Tests for PEAR::%{_pearname}.
-
-%description tests -l pl.UTF-8
-Testy dla PEAR::%{_pearname}.
-
 %prep
 %pear_package_setup
 
@@ -56,6 +41,9 @@ Testy dla PEAR::%{_pearname}.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{php_pear_dir}
 %pear_package_install
+
+# tests should not be packaged
+%{__rm} -r $RPM_BUILD_ROOT%{php_pear_dir}/tests/%{_pearname}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -71,7 +59,3 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/MDB2/Driver/ibase.php
 %{php_pear_dir}/MDB2/Driver/Function/ibase.php
 %{php_pear_dir}/data/MDB2_Driver_ibase
-
-%files tests
-%defattr(644,root,root,755)
-%{php_pear_dir}/tests/%{_pearname}
