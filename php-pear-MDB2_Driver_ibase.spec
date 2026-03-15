@@ -1,7 +1,7 @@
 %define		_status		beta
 %define		_pearname	MDB2_Driver_ibase
 %define		subver	b5
-%define		rel		1
+%define		rel		2
 Summary:	%{_pearname} - ibase MDB2 driver
 Summary(pl.UTF-8):	%{_pearname} - sterownik ibase dla MDB2
 Name:		php-pear-%{_pearname}
